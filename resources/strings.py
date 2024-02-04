@@ -100,20 +100,20 @@ LINK_ARMY_HELPER: Final[str] = (
     )
 
 # --- Default messages ---
-DEFAULT_MESSAGE: Final[str] = '{name} Hey! It\'s time for {command}!'
+DEFAULT_MESSAGE: Final[str] = '{name} {command}'
 DEFAULT_MESSAGE_EVENT: Final[str] = (
-    '{name} Hey! The **{event}** event just finished! You can check the results in <#604410216385085485>.'
+    '{name} The **{event}** event just finished! You can check the results in <#604410216385085485>.'
 )
 DEFAULT_MESSAGES_EVENT_PINGS: Final[dict[str, str]] = {
-    'arena': '@here Hey! Click or type `JOIN` to get some cookies!',
-    'coin': '@here Hey! Click or type `CATCH` to get some coins!',
-    'fish': '@here Hey! Click or type `LURE` to get some fish!',
-    'legendary_boss': '@here Hey! Click or type `TIME TO FIGHT` to kill a dragon!',
-    'log': '@here Hey! Click or type `CUT` to get some logs!',
-    'lootbox': '@here Hey! Click or type `SUMMON` to get a lootbox!',
-    'miniboss': '@here Hey! Click or type `FIGHT` to get some coins!',
+    'arena': '@here `JOIN` to get some cookies!',
+    'coin': '@here `CATCH` to get some coins!',
+    'fish': '@here `LURE` to get some fish!',
+    'legendary_boss': '@here `TIME TO FIGHT` to kill a dragon!',
+    'log': '@here `CUT` to get some logs!',
+    'lootbox': '@here `SUMMON` to get a lootbox!',
+    'miniboss': '@here `FIGHT` to get some coins!',
 }
-DEFAULT_MESSAGE_CUSTOM_REMINDER: Final[str] = 'Hey! This is your reminder for **{message}**!'
+DEFAULT_MESSAGE_CUSTOM_REMINDER: Final[str] = 'This is your reminder for **{message}**!'
 
 DEFAULT_MESSAGES: Final[dict[str, str]] = {
     'advent-calendar': DEFAULT_MESSAGE,
@@ -126,28 +126,28 @@ DEFAULT_MESSAGES: Final[dict[str, str]] = {
     'cel-sacrifice': DEFAULT_MESSAGE,
     'chimney': DEFAULT_MESSAGE,
     'boo': DEFAULT_MESSAGE,
-    'boosts': '{name} Hey! Your {boost_emoji} **{boost_item}** just ran out!',
+    'boosts': '{name} Your {boost_emoji} **{boost_item}** just ran out!',
     'daily': DEFAULT_MESSAGE,
     'duel': DEFAULT_MESSAGE,
     'dungeon-miniboss': DEFAULT_MESSAGE,
-    'epic': '{name} Hey! Your EPIC item cooldown is ready!',
-    'epic-shop': '{name} Hey! The {epic_shop_emoji} **{epic_shop_item}** is back on sale in the {command}!',
-    'eternal-presents': '{name} Hey! It''s time to {command} your ETERNAL presents! Make sure you open all of them in **one** command!',
+    'epic': '{name} Your EPIC item cooldown is ready!',
+    'epic-shop': '{name} The {epic_shop_emoji} **{epic_shop_item}** is back on sale in the {command}!',
+    'eternal-presents': '{name} It''s time to {command} your ETERNAL presents! Make sure you open all of them in **one** command!',
     'farm': DEFAULT_MESSAGE,
     'guild': DEFAULT_MESSAGE,
     'horse': DEFAULT_MESSAGE,
     'horse-race': DEFAULT_MESSAGE_EVENT,
-    'hunt': '{name} Hey! It\'s time for {command}! {drop_emoji}',
-    'hunt-partner': '{name} Hey! Your partner **{partner}** is ready to {command}!',
+    'hunt': '{name} {command} {drop_emoji}',
+    'hunt-partner': '{name} Your partner **{partner}** is ready to {command}!',
     'lootbox': DEFAULT_MESSAGE,
-    'lottery': '{name} Hey! The lottery just finished. Use </lottery:957815874063061072> to check out who won and {command} to enter the next draw!',
+    'lottery': '{name} The lottery just finished. Use </lottery:957815874063061072> to check out who won and {command} to enter the next draw!',
     'love-share': DEFAULT_MESSAGE,
-    'maintenance': '{name} Hey! Maintenance is over!',
+    'maintenance': '{name} Maintenance is over!',
     'megarace': DEFAULT_MESSAGE,
     'minintboss': DEFAULT_MESSAGE_EVENT,
     'minirace': DEFAULT_MESSAGE,
-    'partner': '{name} Hey! **{partner}** found {loot} for you!',
-    'pets': '{name} Hey! Your pet `{id}` is back! {emoji}',
+    'partner': '{name} **{partner}** found {loot} for you!',
+    'pets': '{name} Your pet `{id}` is back! {emoji}',
     'pet-tournament': DEFAULT_MESSAGE_EVENT,
     'quest': DEFAULT_MESSAGE,
     'training': DEFAULT_MESSAGE,

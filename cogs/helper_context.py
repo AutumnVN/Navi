@@ -279,7 +279,7 @@ class HelperContextCog(commands.Cog):
                 if not user_settings.bot_enabled or not user_settings.training_helper_enabled: return
                 user_global_name = user.global_name if user.global_name is not None else user.name
                 action = await functions.get_slash_command(user_settings, 'area')
-                warning = f'Hey! Don\'t forget to use {action} to go back to your previous area!'
+                warning = f'Don\'t forget to use {action} to go back to your previous area!'
                 if not user_settings.dnd_mode_enabled:
                     if user_settings.ping_after_message:
                         await message.channel.send(f'{warning} {user.mention}')
@@ -315,7 +315,7 @@ class HelperContextCog(commands.Cog):
                 if not user_settings.bot_enabled or not user_settings.training_helper_enabled: return
                 user_global_name = user.global_name if user.global_name is not None else user.name
                 action = await functions.get_slash_command(user_settings, 'area')
-                warning = f'Hey! Don\'t forget to use {action} to go back to your previous area!'
+                warning = f'Don\'t forget to use {action} to go back to your previous area!'
                 if not user_settings.dnd_mode_enabled:
                     if user_settings.ping_after_message:
                         await message.channel.send(f'{warning} {user.mention}')

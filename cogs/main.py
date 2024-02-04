@@ -13,7 +13,7 @@ from resources import exceptions, functions, logs, settings
 
 if TYPE_CHECKING:
     from discord.ext.commands import Command
-        
+
 
 class MainCog(commands.Cog):
     """Cog with events and help and about commands"""
@@ -27,7 +27,7 @@ class MainCog(commands.Cog):
     async def event_reductions(self, ctx: bridge.BridgeContext) -> None:
         """Shows currently active event reductions"""
         await main.command_event_reduction(self.bot, ctx)
-        
+
     @bridge.bridge_command(name='help', description='Main help command', aliases=('h',))
     @commands.guild_only()
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -113,7 +113,7 @@ class MainCog(commands.Cog):
         elif isinstance(error, exceptions.FirstTimeUserError):
             ctx_author_name: str = ctx.author.global_name if ctx.author.global_name else ctx.author.name
             await ctx.respond(
-                f'Hey! **{ctx_author_name}**, looks like I don\'t know you yet.\n'
+                f'**{ctx_author_name}**, looks like I don\'t know you yet.\n'
                 f'Use {await functions.get_navi_slash_command(self.bot, "on")} or `{ctx.prefix}on` to activate me first.',
                 ephemeral=True
             )
@@ -221,7 +221,7 @@ class MainCog(commands.Cog):
         try:
             guild_settings: guilds.Guild = await guilds.get_guild(guild.id)
             welcome_message: str = (
-                f'Hey! **{guild.name}**! I\'m here to remind you to do your EPIC RPG commands!\n\n'
+                f'**{guild.name}**! I\'m here to remind you to do your EPIC RPG commands!\n\n'
                 f'Note that reminders are off by default. If you want to get reminded, please use '
                 f'{await functions.get_navi_slash_command(self.bot, "on")} or `{guild_settings.prefix}on` to activate me.'
             )

@@ -333,7 +333,7 @@ async def command_multipliers(bot: bridge.AutoShardedBot, ctx: commands.Context,
                         activities_found.append(arg)
                     else:
                         ignored_activities.append(arg)
-                    
+
         if activities_found:
             await ctx.reply(
                 f'Invalid syntax.\n\n{syntax}'
@@ -363,7 +363,7 @@ async def command_multipliers(bot: bridge.AutoShardedBot, ctx: commands.Context,
 async def command_on(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext) -> None:
     """On command"""
     first_time_user = False
-    ctx_author_name = ctx.author.global_name if ctx.author.global_name is not None else ctx.author.name    
+    ctx_author_name = ctx.author.global_name if ctx.author.global_name is not None else ctx.author.name
     try:
         user: users.User = await users.get_user(ctx.author.id)
         if user.bot_enabled:
@@ -380,7 +380,7 @@ async def command_on(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext) -> N
         await ctx.respond(strings.MSG_ERROR, ephemeral=True)
         return
     if not first_time_user:
-        answer = f'Hey! **{ctx_author_name}**! Welcome back!'
+        answer = f'**{ctx_author_name}**! Welcome back!'
         await ctx.respond(answer)
     else:
         field_tldr_setup = (
@@ -411,7 +411,7 @@ async def command_on(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext) -> N
         img_navi = discord.File(settings.IMG_NAVI, filename='navi.png')
         image_url = 'attachment://navi.png'
         embed = discord.Embed(
-            title = f'Hey! {ctx_author_name}! Hello!'.upper(),
+            title = f'{ctx_author_name}! Hello!'.upper(),
             description = (
                 f'I am here to help you with your EPIC RPG commands!\n'
                 f'Have a look at {await functions.get_navi_slash_command(bot, "help")} or `{prefix}help` '
@@ -461,7 +461,7 @@ async def command_off(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext) -> 
     else:
         def check(m: discord.Message) -> bool:
             return m.author == ctx.author and m.channel == ctx.channel
-        
+
         interaction = await ctx.respond(f'{answer} `[yes/no]`')
         try:
             answer = await bot.wait_for('message', check=check, timeout=30)
@@ -569,12 +569,12 @@ async def command_purge_data(bot: bridge.AutoShardedBot, ctx: bridge.BridgeConte
             await interaction.edit(
                 content=f'{emojis.ENABLED} **{ctx_author_name}**, you are now gone and forgotten. Thanks for using me!',
                 view=None
-            )   
+            )
         else:
             await interaction.edit( content=answer_aborted, view=None)
     else:
         await interaction.edit(content=answer_aborted, view=None)
-        
+
 
 async def command_settings_alts(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext,
                                 switch_view: Optional[discord.ui.View] = None) -> None:
@@ -595,7 +595,7 @@ async def command_settings_alts(bot: bridge.AutoShardedBot, ctx: bridge.BridgeCo
     view.interaction = interaction
     await view.wait()
 
-    
+
 async def command_settings_clan(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext,
                                 switch_view: Optional[discord.ui.View] = None) -> None:
     """Clan settings command"""
@@ -699,7 +699,7 @@ async def command_settings_multipliers(bot: bridge.AutoShardedBot, ctx: bridge.B
         switch_view.stop()
     if user_settings is None:
         user_settings: users.User = await users.get_user(ctx.author.id)
-        
+
     view = views.SettingsMultipliersView(ctx, bot, user_settings, embed_settings_multipliers)
     embed = await embed_settings_multipliers(bot, ctx, user_settings)
     if interaction is None:
@@ -708,7 +708,7 @@ async def command_settings_multipliers(bot: bridge.AutoShardedBot, ctx: bridge.B
         await interaction.edit(embed=embed, view=view)
     view.interaction = interaction
     await view.wait()
-    
+
 
 async def command_settings_partner(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext,
                                    switch_view: Optional[discord.ui.View] = None) -> None:
@@ -802,7 +802,7 @@ async def command_server_settings_auto_flex(bot: bridge.AutoShardedBot, ctx: bri
     view.interaction = interaction
     await view.wait()
 
-    
+
 async def command_server_settings_auto_flex_2(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext,
                                               switch_view: Optional[discord.ui.View] = None) -> None:
     """Server settings auto-flex command (page)"""
@@ -821,7 +821,7 @@ async def command_server_settings_auto_flex_2(bot: bridge.AutoShardedBot, ctx: b
     view.interaction = interaction
     await view.wait()
 
-    
+
 async def command_server_settings_main(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext,
                                        switch_view: Optional[discord.ui.View] = None) -> None:
     """Server settings main command"""
@@ -840,7 +840,7 @@ async def command_server_settings_main(bot: bridge.AutoShardedBot, ctx: bridge.B
     view.interaction = interaction
     await view.wait()
 
-    
+
 async def command_server_settings_event_pings(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext,
                                               switch_view: Optional[discord.ui.View] = None) -> None:
     """Server settings event ping command"""
@@ -1103,7 +1103,7 @@ async def embed_settings_multipliers(bot: bridge.AutoShardedBot, ctx: discord.Ap
             multiplier_management: str = f'{emojis.ENABLED}`Enabled`'
     else:
         multiplier_management: str = f'{emojis.DISABLED}`Disabled`'
-    
+
     field_settings: str = (
         f'{emojis.BP} **Automatic managed multipliers**: {multiplier_management}\n'
         f'{emojis.DETAIL} _Managed multipliers are not changeable in automatic mode._\n'
@@ -1215,7 +1215,7 @@ async def embed_settings_ready(bot: bridge.AutoShardedBot, ctx: discord.Applicat
     if user_settings.ready_pets_claim_after_every_pet:
         pets_claim_type = 'After every pet'
     else:
-        pets_claim_type = 'When all pets are back'    
+        pets_claim_type = 'When all pets are back'
     field_settings = (
         f'{emojis.BP} **Auto-ready**: {auto_ready_enabled}\n'
         f'{emojis.BP} **Auto-ready frequency**: `{frequency}`'
@@ -1605,7 +1605,7 @@ async def embed_server_settings_auto_flex_2(bot: bridge.AutoShardedBot, ctx: dis
 async def embed_server_settings_event_pings(bot: bridge.AutoShardedBot, ctx: discord.ApplicationContext,
                                             guild_settings: guilds.Guild) -> discord.Embed:
     """Server settings event ping embed"""
-    
+
     embed = discord.Embed(
         color = settings.EMBED_COLOR,
         title = f'{ctx.guild.name.upper()} SERVER SETTINGS: EVENT PINGS',

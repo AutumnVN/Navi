@@ -101,87 +101,87 @@ def update_database() -> bool:
             "training_helper_button_mode INTEGER NOT NULL DEFAULT (1), "
             "training_helper_enabled INTEGER DEFAULT (1) NOT NULL, "
             "alert_advent_enabled INTEGER NOT NULL DEFAULT (1), "
-            "alert_advent_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_advent_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_advent_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_adventure_enabled INTEGER DEFAULT (True) NOT NULL, "
-            "alert_adventure_message TEXT DEFAULT ('{name} Hey! It''s time for {command}!') NOT NULL, "
+            "alert_adventure_message TEXT DEFAULT ('{name} {command}') NOT NULL, "
             "alert_adventure_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_arena_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_arena_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_arena_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_arena_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_big_arena_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_big_arena_message TEXT NOT NULL DEFAULT ('{name} Hey! The **{event}** event just finished! You can check the results in <#604410216385085485> on the official EPIC RPG server.'), "
+            "alert_big_arena_message TEXT NOT NULL DEFAULT ('{name} The **{event}** event just finished! You can check the results in <#604410216385085485> on the official EPIC RPG server.'), "
             "alert_big_arena_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_boo_enabled INTEGER NOT NULL DEFAULT (1), "
-            "alert_boo_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_boo_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_boo_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_chimney_enabled INTEGER NOT NULL DEFAULT (1), "
-            "alert_chimney_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_chimney_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_chimney_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_daily_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_daily_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_daily_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_daily_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_duel_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_duel_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_duel_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_duel_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_dungeon_miniboss_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_dungeon_miniboss_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_dungeon_miniboss_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_dungeon_miniboss_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_epic_enabled INTEGER NOT NULL DEFAULT (1), "
-            "alert_epic_message TEXT NOT NULL DEFAULT ('{name} Hey! Your EPIC item cooldown is ready!'), "
+            "alert_epic_message TEXT NOT NULL DEFAULT ('{name} Your EPIC item cooldown is ready!'), "
             "alert_epic_visible INTEGER NOT NULL DEFAULT (0), "
             "alert_farm_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_farm_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_farm_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_farm_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_guild_enabled INTEGER NOT NULL DEFAULT (1), "
-            "alert_guild_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_guild_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_guild_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_horse_breed_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_horse_breed_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_horse_breed_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_horse_breed_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_horse_race_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_horse_race_message TEXT NOT NULL DEFAULT ('{name} Hey! The **{event}** event just finished! You can check the results in <#604410216385085485> on the official EPIC RPG server.'), "
+            "alert_horse_race_message TEXT NOT NULL DEFAULT ('{name} The **{event}** event just finished! You can check the results in <#604410216385085485> on the official EPIC RPG server.'), "
             "alert_horse_race_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_hunt_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_hunt_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_hunt_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_hunt_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_lootbox_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_lootbox_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_lootbox_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_lootbox_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_lottery_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_lottery_message TEXT NOT NULL DEFAULT ('{name} Hey! The lottery just finished. Use </lottery:957815874063061072> to check out who won and {command} to enter the next draw!'), "
+            "alert_lottery_message TEXT NOT NULL DEFAULT ('{name} The lottery just finished. Use </lottery:957815874063061072> to check out who won and {command} to enter the next draw!'), "
             "alert_lottery_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_megarace_enabled INTEGER NOT NULL DEFAULT (1), "
-            "alert_megarace_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_megarace_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_megarace_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_minirace_enabled INTEGER NOT NULL DEFAULT (1), "
-            "alert_minirace_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_minirace_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_minirace_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_not_so_mini_boss_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_not_so_mini_boss_message TEXT NOT NULL DEFAULT ('{name} Hey! The **{event}** event just finished! You can check the results in <#604410216385085485> on the official EPIC RPG server.'), "
+            "alert_not_so_mini_boss_message TEXT NOT NULL DEFAULT ('{name} The **{event}** event just finished! You can check the results in <#604410216385085485> on the official EPIC RPG server.'), "
             "alert_not_so_mini_boss_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_partner_enabled INTEGER DEFAULT (1) NOT NULL, "
             "alert_partner_message TEXT NOT NULL DEFAULT ('{name} **{partner}** found {loot} for you!'), "
             "alert_pet_tournament_enabled INTEGER NOT NULL DEFAULT (1), "
-            "alert_pet_tournament_message TEXT NOT NULL DEFAULT ('{name} Hey! The **{event}** event just finished! You can check the results in <#604410216385085485> on the official EPIC RPG server.'), "
+            "alert_pet_tournament_message TEXT NOT NULL DEFAULT ('{name} The **{event}** event just finished! You can check the results in <#604410216385085485> on the official EPIC RPG server.'), "
             "alert_pet_tournament_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_pets_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_pets_message TEXT NOT NULL DEFAULT ('{name} Hey! Your pet `{id}` is back! {emoji}'), "
+            "alert_pets_message TEXT NOT NULL DEFAULT ('{name} Your pet `{id}` is back! {emoji}'), "
             "alert_pets_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_quest_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_quest_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_quest_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_quest_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_training_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_training_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_training_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_training_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_vote_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_vote_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_vote_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_vote_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_weekly_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_weekly_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_weekly_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_weekly_visible INTEGER NOT NULL DEFAULT (1), "
             "alert_work_enabled INTEGER DEFAULT (1) NOT NULL, "
-            "alert_work_message TEXT NOT NULL DEFAULT ('{name} Hey! It''s time for {command}!'), "
+            "alert_work_message TEXT NOT NULL DEFAULT ('{name} {command}'), "
             "alert_work_visible INTEGER NOT NULL DEFAULT (1))"
         )
         cur.execute(sql)
@@ -266,7 +266,7 @@ def update_database() -> bool:
     if db_version < 3:
         sqls += [
             "ALTER TABLE users ADD alert_party_popper_enabled INTEGER NOT NULL DEFAULT (1)",
-            "ALTER TABLE users ADD alert_party_popper_message TEXT NOT NULL DEFAULT ('{name} Hey! Your party popper just ran out!')",
+            "ALTER TABLE users ADD alert_party_popper_message TEXT NOT NULL DEFAULT ('{name} Your party popper just ran out!')",
             "ALTER TABLE users ADD alert_party_popper_visible INTEGER NOT NULL DEFAULT (0)",
         ]
 
@@ -289,7 +289,7 @@ def update_database() -> bool:
             "ALTER TABLE users ADD ready_after_all_commands INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_boosts_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_boosts_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! Your {boost_emoji} **{boost_item}** just ran out!')",
+            "('{name} Your {boost_emoji} **{boost_item}** just ran out!')",
             "ALTER TABLE users ADD alert_boosts_visible INTEGER NOT NULL DEFAULT (0)",
             "ALTER TABLE users ADD farm_helper_mode INTEGER NOT NULL DEFAULT (0)",
             "ALTER TABLE users ADD inventory_bread INTEGER NOT NULL DEFAULT (0)",
@@ -336,11 +336,11 @@ def update_database() -> bool:
 
         # Update default event messages
         default_message_event_old: str = (
-            '{name} Hey! The **{event}** event just finished! You can check the results in <#604410216385085485> on the '
+            '{name} The **{event}** event just finished! You can check the results in <#604410216385085485> on the '
             f'official EPIC RPG server.'
         )
         default_message_event_new: str = (
-            '{name} Hey! The **{event}** event just finished! You can check the results in <#604410216385085485>.'
+            '{name} The **{event}** event just finished! You can check the results in <#604410216385085485>.'
         )
         cur.execute('SELECT * FROM users')
         all_users: list[Any] = cur.fetchall()
@@ -390,19 +390,19 @@ def update_database() -> bool:
         sqls += [
             "ALTER TABLE users ADD alert_cel_dailyquest_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_cel_dailyquest_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! It''s time for {command}!')",
+            "('{name} {command}')",
             "ALTER TABLE users ADD alert_cel_dailyquest_visible INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_cel_multiply_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_cel_multiply_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! It''s time for {command}!')",
+            "('{name} {command}')",
             "ALTER TABLE users ADD alert_cel_multiply_visible INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_cel_sacrifice_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_cel_sacrifice_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! It''s time for {command}!')",
+            "('{name} {command}')",
             "ALTER TABLE users ADD alert_cel_sacrifice_visible INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_maintenance_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_maintenance_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! Maintenance is over!')",
+            "('{name} Maintenance is over!')",
             "ALTER TABLE users ADD alert_maintenance_visible INTEGER NOT NULL DEFAULT (1)",
         ]
     if db_version < 10:
@@ -423,7 +423,7 @@ def update_database() -> bool:
             "ALTER TABLE guilds ADD auto_flex_xmas_eternal_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_eternal_present_enabled INTEGER DEFAULT (1) NOT NULL",
             "ALTER TABLE users ADD alert_eternal_present_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! It''s time to {command} your ETERNAL presents! Make sure you open all of them in **one** command!')",
+            "('{name} It''s time to {command} your ETERNAL presents! Make sure you open all of them in **one** command!')",
             "ALTER TABLE users ADD alert_eternal_present_visible INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD inventory_present_eternal INTEGER NOT NULL DEFAULT (0)",
         ]
@@ -435,7 +435,7 @@ def update_database() -> bool:
         sqls += [
             "ALTER TABLE users ADD alert_card_hand_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_card_hand_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! It''s time for {command}!')",
+            "('{name} {command}')",
             "ALTER TABLE users ADD alert_card_hand_visible INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD round_card_active INTEGER NOT NULL DEFAULT (0)",
             "ALTER TABLE users ADD potion_flask_active INTEGER NOT NULL DEFAULT (0)",
@@ -452,14 +452,14 @@ def update_database() -> bool:
             "ALTER TABLE users ADD partner_chocolate_box_unlocked INTEGER NOT NULL DEFAULT (0)",
             "ALTER TABLE users ADD alert_epic_shop_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_epic_shop_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! The {epic_shop_emoji} **{epic_shop_item}** is back on sale in the {command}!')",
+            "('{name} The {epic_shop_emoji} **{epic_shop_item}** is back on sale in the {command}!')",
             "ALTER TABLE users ADD alert_epic_shop_visible INTEGER NOT NULL DEFAULT (1)",
         ]
     if db_version < 17:
         sqls += [
             "ALTER TABLE users ADD alert_love_share_enabled INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_love_share_message TEXT NOT NULL DEFAULT "
-            "('{name} Hey! It''s time for {command}!')",
+            "('{name} {command}')",
             "ALTER TABLE users ADD alert_love_share_visible INTEGER NOT NULL DEFAULT (1)",
         ]
     if db_version < 18:
@@ -490,25 +490,25 @@ def update_database() -> bool:
     if db_version < 24:
         sqls += [
             "ALTER TABLE users ADD alert_hunt_partner_enabled INTEGER DEFAULT (1) NOT NULL",
-            "ALTER TABLE users ADD alert_hunt_partner_message TEXT NOT NULL DEFAULT ('{name} Hey! Your partner **{partner}** is ready to {command}!')",
+            "ALTER TABLE users ADD alert_hunt_partner_message TEXT NOT NULL DEFAULT ('{name} Your partner **{partner}** is ready to {command}!')",
             "ALTER TABLE users ADD alert_hunt_partner_multiplier REAL NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD alert_hunt_partner_visible INTEGER NOT NULL DEFAULT (1)",
             "ALTER TABLE users ADD hunt_reminders_combined INTEGER NOT NULL DEFAULT (0)",
             "ALTER TABLE users ADD hunt_end_time DATETIME NOT NULL DEFAULT ('1970-01-01 00:00:00')",
             "ALTER TABLE guilds ADD event_arena_enabled INTEGER NOT NULL DEFAULT (0)",
-            "ALTER TABLE guilds ADD event_arena_message TEXT NOT NULL DEFAULT ('@here Hey! Click or type `JOIN` to get some cookies!')",
+            "ALTER TABLE guilds ADD event_arena_message TEXT NOT NULL DEFAULT ('@here Click or type `JOIN` to get some cookies!')",
             "ALTER TABLE guilds ADD event_coin_enabled INTEGER NOT NULL DEFAULT (0)",
-            "ALTER TABLE guilds ADD event_coin_message TEXT NOT NULL DEFAULT ('@here Hey! Click or type `CATCH` to get some coins!')",
+            "ALTER TABLE guilds ADD event_coin_message TEXT NOT NULL DEFAULT ('@here Click or type `CATCH` to get some coins!')",
             "ALTER TABLE guilds ADD event_fish_enabled INTEGER NOT NULL DEFAULT (0)",
-            "ALTER TABLE guilds ADD event_fish_message TEXT NOT NULL DEFAULT ('@here Hey! Click or type `LURE` to get some fish!')",
+            "ALTER TABLE guilds ADD event_fish_message TEXT NOT NULL DEFAULT ('@here Click or type `LURE` to get some fish!')",
             "ALTER TABLE guilds ADD event_legendary_boss_enabled INTEGER NOT NULL DEFAULT (0)",
-            "ALTER TABLE guilds ADD event_legendary_boss_message TEXT NOT NULL DEFAULT ('@here Hey! Click or type `TIME TO FIGHT` to kill a dragon!')",
+            "ALTER TABLE guilds ADD event_legendary_boss_message TEXT NOT NULL DEFAULT ('@here Click or type `TIME TO FIGHT` to kill a dragon!')",
             "ALTER TABLE guilds ADD event_log_enabled INTEGER NOT NULL DEFAULT (0)",
-            "ALTER TABLE guilds ADD event_log_message TEXT NOT NULL DEFAULT ('@here Hey! Click or type `CUT` to get some logs!')",
+            "ALTER TABLE guilds ADD event_log_message TEXT NOT NULL DEFAULT ('@here Click or type `CUT` to get some logs!')",
             "ALTER TABLE guilds ADD event_lootbox_enabled INTEGER NOT NULL DEFAULT (0)",
-            "ALTER TABLE guilds ADD event_lootbox_message TEXT NOT NULL DEFAULT ('@here Hey! Click or type `SUMMON` to get a lootbox!')",
+            "ALTER TABLE guilds ADD event_lootbox_message TEXT NOT NULL DEFAULT ('@here Click or type `SUMMON` to get a lootbox!')",
             "ALTER TABLE guilds ADD event_miniboss_enabled INTEGER NOT NULL DEFAULT (0)",
-            "ALTER TABLE guilds ADD event_miniboss_message TEXT NOT NULL DEFAULT ('@here Hey! Click or type `FIGHT` to get some coins!')",
+            "ALTER TABLE guilds ADD event_miniboss_message TEXT NOT NULL DEFAULT ('@here Click or type `FIGHT` to get some coins!')",
         ]
     if db_version < 25:
         sqls += [
@@ -520,7 +520,7 @@ def update_database() -> bool:
             sqls += [
                 "INSERT INTO settings (name, value) VALUES ('seasonal_event', 'none')",
             ]
-        
+
     # Run SQLs
     sql: str
     for sql in sqls:

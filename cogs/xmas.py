@@ -201,7 +201,7 @@ class ChristmasCog(commands.Cog):
                 reminder: reminders.Reminder = (
                     await reminders.insert_user_reminder(user.id, 'eternal-presents', timedelta(hours=24),
                                                          message.channel.id, reminder_message)
-                )   
+                )
                 await functions.add_reminder_reaction(message, reminder, user_settings)
 
 
@@ -245,7 +245,7 @@ class ChristmasCog(commands.Cog):
                     field_values = f'{field_values}\n{field.value}'
                 present_eternal_count = 0
                 present_eternal_match = re.search(r"eternal present\*\*: ([0-9,]+)", field_values, re.IGNORECASE)
-                
+
                 if present_eternal_match:
                     present_eternal_count = int(present_eternal_match.group(1).replace(',',''))
                 if user_settings.inventory.present_eternal != present_eternal_count:
@@ -305,7 +305,7 @@ class ChristmasCog(commands.Cog):
                     reminder: reminders.Reminder = (
                         await reminders.insert_user_reminder(user.id, 'unstuck', timedelta(minutes=5),
                                                              message.channel.id,
-                                                             '{name} Hey! Good news! You got unstuck from that chimney!')
+                                                             '{name} Good news! You got unstuck from that chimney!')
                     )
 
             # Turn on christmas area mode, gingerbread
@@ -409,8 +409,8 @@ class ChristmasCog(commands.Cog):
             ):
                 event_mobs = [
                    'christmas slime',
-                   'bunny slime', 
-                   'horslime', 
+                   'bunny slime',
+                   'horslime',
                 ]
                 if any(mob in message_content.lower() for mob in event_mobs): return
                 user_id = user_name = partner_name = None
@@ -569,7 +569,7 @@ class ChristmasCog(commands.Cog):
                                                          message.channel.id, reminder_message)
                 )
                 await functions.add_reminder_reaction(message, reminder, user_settings)
-                
+
 
 
 # Initialization

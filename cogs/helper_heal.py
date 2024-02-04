@@ -123,10 +123,10 @@ class HelperHealCog(commands.Cog):
             if health_lost > (health_remaining - (health_lost / 9)):
                 if user_settings.current_area == 16:
                     action = await functions.get_slash_command(user_settings, 'buy')
-                    warning = f'Hey! Time to {action} a life boost! ✨'
+                    warning = f'Time to {action} a life boost! ✨'
                 else:
                     action = await functions.get_slash_command(user_settings, 'heal')
-                    warning = f'Hey! Time to {action}! {emojis.LIFE_POTION}'
+                    warning = f'Time to {action}! {emojis.LIFE_POTION}'
                 if not user_settings.dnd_mode_enabled:
                     if user_settings.ping_after_message:
                         await message.channel.send(f'{warning} {user.mention}')
@@ -209,7 +209,7 @@ class HelperHealCog(commands.Cog):
                 health_remaining = 0
             if health_lost > (health_remaining - (health_lost / 10)):
                 action = await functions.get_slash_command(user_settings, 'heal')
-                warning = f'Hey! Time to {action}! {emojis.LIFE_POTION}'
+                warning = f'Time to {action}! {emojis.LIFE_POTION}'
                 if not user_settings.dnd_mode_enabled:
                     if user_settings.ping_after_message:
                         await message.channel.send(f'{warning} {user.mention}')
@@ -247,7 +247,7 @@ class HelperHealCog(commands.Cog):
                 pass
             user_global_name = user.global_name if user.global_name is not None else user.name
             action = await functions.get_slash_command(user_settings, 'heal')
-            warning = f'Hey! Time to {action}! {emojis.LIFE_POTION}'
+            warning = f'Time to {action}! {emojis.LIFE_POTION}'
             if not user_settings.dnd_mode_enabled:
                 if user_settings.ping_after_message:
                     await message.channel.send(f'{warning} {user.mention}')
@@ -280,7 +280,7 @@ class HelperHealCog(commands.Cog):
             if not user_settings.bot_enabled or not user_settings.heal_warning_enabled: return
             user_global_name = user.global_name if user.global_name is not None else user.name
             action = await functions.get_slash_command(user_settings, 'heal')
-            warning = f'Hey! Time to {action}! {emojis.LIFE_POTION}'
+            warning = f'Time to {action}! {emojis.LIFE_POTION}'
             if not user_settings.dnd_mode_enabled:
                 if user_settings.ping_after_message:
                     await message.channel.send(f'{warning} {user.mention}')

@@ -73,7 +73,7 @@ class HorseFestivalCog(commands.Cog):
                                                          message_after.channel.id, reminder_message)
                 )
                 await functions.add_reminder_reaction(message_after, reminder, user_settings)
-        
+
         if message_before.pinned != message_after.pinned: return
         embed_data_before = await functions.parse_embed(message_before)
         embed_data_after = await functions.parse_embed(message_after)
@@ -175,7 +175,7 @@ class HorseFestivalCog(commands.Cog):
                 )
                 await functions.add_reminder_reaction(message, reminder, user_settings)
 
-            
+
             search_strings = [
                 'you are now in the list of pending players for a tournament', #English
                 'ahora estás en la lista de jugadores pendientes de un torneo', #Spanish
@@ -457,7 +457,7 @@ class HorseFestivalCog(commands.Cog):
                 except exceptions.FirstTimeUserError:
                     return
                 if not user_settings.bot_enabled or not user_settings.megarace_helper_enabled: return
-                answer = f'Hey! A **megarace boost** just appeared!'
+                answer = f'A **megarace boost** just appeared!'
                 answer = f'{answer} {user.mention}' if user_settings.ping_after_message else f'{user.mention} {answer}'
                 await message.channel.send(answer)
 

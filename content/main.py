@@ -202,7 +202,7 @@ async def embed_help(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext) -> d
         color = settings.EMBED_COLOR,
         title = 'NAVI' if not settings.LITE_MODE else 'NAVI LITE',
         description =   (
-            f'_Hey! **{ctx_author_name}**! Hello!_\n'
+            f'_**{ctx_author_name}**! Hello!_\n'
         )
     )
     embed.add_field(name='USER', value=user_settings, inline=False)

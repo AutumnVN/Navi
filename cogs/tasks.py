@@ -170,7 +170,7 @@ class TasksCog(commands.Cog):
                     try:
                         await asyncio.sleep(time_left.total_seconds())
                         await channel.send(
-                            f'<@{quest_user_id}> Hey! It\'s time for your raid quest. '
+                            f'<@{quest_user_id}> It\'s time for your raid quest. '
                             f'You have 5 minutes, chop chop.'
                         )
                         reminder: reminders.Reminder = (
@@ -451,7 +451,7 @@ class TasksCog(commands.Cog):
             end_time = utils.utcnow()
             time_passed = end_time - start_time
             logs.logger.info(f'Consolidated {log_entry_count:,} log entries in {format_timespan(time_passed)}.')
-            
+
     @tasks.loop(seconds=60)
     async def reset_trade_daily_done(self) -> None:
         """Task that resets the daily trade amounts to 0"""
