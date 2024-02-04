@@ -43,7 +43,7 @@ class SettingsCog(commands.Cog):
             await ctx.respond('Are you trying to write a novel here? 🤔')
             return
         await settings_cmd.command_enable_disable(self.bot, ctx, 'enable', settings.split())
-        
+
     @bridge.bridge_command(name='disable', aliases=('d',))
     @commands.bot_has_permissions(send_messages=True)
     async def disable(
@@ -74,7 +74,7 @@ class SettingsCog(commands.Cog):
     async def settings_alts(self, ctx: bridge.BridgeContext):
         """Alt settings command"""
         await settings_cmd.command_settings_alts(self.bot, ctx)
-        
+
     @settings_group.command(name='guild', aliases=('clan', 'g'), description='Manage guild settings')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def settings_clan(self, ctx: bridge.BridgeContext):
@@ -91,31 +91,31 @@ class SettingsCog(commands.Cog):
     async def settings_helpers(self, ctx: bridge.BridgeContext):
         """Helper settings command"""
         await settings_cmd.command_settings_helpers(self.bot, ctx)
-        
+
     @settings_group.command(name='messages', aliases=('message', 'msg', 'm'), description='Manage reminder messages')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def settings_messages(self, ctx: bridge.BridgeContext):
         """Message settings command"""
         await settings_cmd.command_settings_messages(self.bot, ctx)
-        
+
     @settings_group.command(name='multipliers', aliases=('multiplier', 'multi'), description='Manage multipliers')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def settings_multipliers(self, ctx: bridge.BridgeContext):
         """Multiplier settings command"""
         await settings_cmd.command_settings_multipliers(self.bot, ctx)
-        
+
     @settings_group.command(name='partner', aliases=('p', 'marry', 'marriage'), description='Manage partner settings')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def settings_partner(self, ctx: bridge.BridgeContext):
         """Partner settings command"""
         await settings_cmd.command_settings_partner(self.bot, ctx)
-        
+
     @settings_group.command(name='portals', aliases=('portal', 'pt'), description='Manage portals')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def settings_portals(self, ctx: bridge.BridgeContext):
         """Portal settings command"""
         await settings_cmd.command_settings_portals(self.bot, ctx)
-        
+
     @settings_group.command(name='ready', aliases=('rd','auto-ready'), description='Manage ready settings')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def settings_ready(self, ctx: bridge.BridgeContext):
@@ -136,7 +136,7 @@ class SettingsCog(commands.Cog):
         """Server Settings command group"""
         command = self.bot.get_command(name='server-settings main')
         if command is not None: await command.callback(command.cog, ctx)
-        
+
     @server_settings_group.command(name='main', aliases=('s','srv'), description='Manage server settings')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def server_settings_main(self, ctx: bridge.BridgeContext):
@@ -147,7 +147,7 @@ class SettingsCog(commands.Cog):
             # This is to give me (Miriel) server settings access in RPG ARMY. This does NOT give me backdoor access
             # in any other server.
         await settings_cmd.command_server_settings_main(self.bot, ctx)
-        
+
     @server_settings_group.command(name='auto-flex', aliases=('flex','auto_flex','autoflex','a',), description='Manage auto-flex server settings')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def server_settings_auto_flex(self, ctx: bridge.BridgeContext):
@@ -158,7 +158,7 @@ class SettingsCog(commands.Cog):
             # This is to give me (Miriel) server settings access in RPG ARMY. This does NOT give me backdoor access
             # in any other server.
         await settings_cmd.command_server_settings_auto_flex(self.bot, ctx)
-        
+
     @server_settings_group.command(name='event-pings', aliases=('ping','event','events','eventpings','eventping','pings'),
                                    description='Manage event ping server settings')
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
@@ -185,7 +185,7 @@ class SettingsCog(commands.Cog):
     async def multipliers(self, ctx: commands.Context, *args: str) -> None:
         """Multiplier settings (text version)"""
         await settings_cmd.command_multipliers(self.bot, ctx, args)
-        
+
     @commands.command(name='sa', aliases=('srm','sm','srd','sp','sh','spt','sg','smulti','su','ssa','sse','ssm'))
     @commands.bot_has_permissions(send_messages=True, embed_links=True)
     async def settings_shortcuts(self, ctx: commands.Context, *args: str) -> None:
