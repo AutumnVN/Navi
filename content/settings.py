@@ -404,10 +404,6 @@ async def command_on(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext) -> N
             f'post certain rare events (rare lootboxes, high tier loot, etc) to an auto flex channel.\n'
             f'If you don\'t like this, you can turn it off in your user settings.\n'
         )
-        field_privacy = (
-            f'To read more about what data is processed and why, feel free to check the privacy policy found in '
-            f'{await functions.get_navi_slash_command(bot, "help")} or `{prefix}help`.'
-        )
         img_navi = discord.File(settings.IMG_NAVI, filename='navi.png')
         image_url = 'attachment://navi.png'
         embed = discord.Embed(
@@ -423,7 +419,6 @@ async def command_on(bot: bridge.AutoShardedBot, ctx: bridge.BridgeContext) -> N
         embed.add_field(name='SETTINGS', value=field_settings, inline=False)
         embed.add_field(name='COMMAND TRACKING', value=field_tracking, inline=False)
         embed.add_field(name='AUTO FLEXING', value=field_auto_flex, inline=False)
-        embed.add_field(name='PRIVACY POLICY', value=field_privacy, inline=False)
         embed.set_thumbnail(url=image_url)
         view = views.OneButtonView(ctx, discord.ButtonStyle.blurple, 'pressed', '➜ Settings')
         interaction = await ctx.respond(embed=embed, file=img_navi, view=view)
