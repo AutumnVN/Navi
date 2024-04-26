@@ -1543,8 +1543,6 @@ class AutoFlexCog(commands.Cog):
                     'VOID lootbox': emojis.LB_VOID,
                     'ETERNAL lootbox': emojis.LB_ETERNAL,
                 }
-                if message.guild.id != 713541415099170836:
-                    lootboxes_user_lost['OMEGA lootbox'] = emojis.LB_OMEGA
                 lootboxes_partner = {
                     'OMEGA lootbox': emojis.LB_OMEGA,
                     'GODLY lootbox': emojis.LB_GODLY,
@@ -1556,8 +1554,6 @@ class AutoFlexCog(commands.Cog):
                     'VOID lootbox': emojis.LB_VOID,
                     'ETERNAL lootbox': emojis.LB_ETERNAL,
                 }
-                if message.guild.id != 713541415099170836:
-                    lootboxes_partner_lost['OMEGA lootbox'] = emojis.LB_OMEGA
                 lootbox_user_found = []
                 lootbox_user_lost = []
                 lootbox_partner_found = []
@@ -1632,7 +1628,7 @@ class AutoFlexCog(commands.Cog):
                     lootbox_user_found.append(lootbox)
                     lootbox_user_found.append(lootbox_amount)
                     break
-                
+
                 for lootbox in lootboxes_user_lost.keys():
                     for pattern in search_patterns_user_lost:
                         pattern = rf'{pattern} {re.escape(lootbox)}'
@@ -1672,7 +1668,7 @@ class AutoFlexCog(commands.Cog):
                         lootbox_partner_found.append(lootbox)
                         lootbox_partner_found.append(lootbox_amount)
                         break
-                    
+
                     for lootbox in lootboxes_partner_lost.keys():
                         for pattern in search_patterns_partner_lost:
                             pattern = rf'{pattern} {re.escape(lootbox)}'
@@ -1700,9 +1696,9 @@ class AutoFlexCog(commands.Cog):
                                 epic_berry_partner_found.append(drop_amount)
                                 break
 
-                lb_omega_non_hm_amount = 2 if message.guild.id == 713541415099170836 else 1
+                lb_omega_non_hm_amount = 2
                 lb_omega_hm_amount = 3
-                lb_omega_partner_amount = 2 if message.guild.id == 713541415099170836 else 1
+                lb_omega_partner_amount = 2
                 if (lootbox_user_found or lootbox_partner_found or epic_berry_user_found
                     or epic_berry_partner_found or lootbox_user_lost or lootbox_partner_lost):
 
@@ -2436,7 +2432,7 @@ class AutoFlexCog(commands.Cog):
                 await self.send_auto_flex_message(message, guild_settings, user_settings, user, event,
                                                   description)
 
-                
+
             # Golden cards
             search_strings = [
                 'goldened these cards!',
@@ -2469,15 +2465,15 @@ class AutoFlexCog(commands.Cog):
                 except exceptions.FirstTimeUserError:
                     return
                 if not user_settings.bot_enabled or not user_settings.auto_flex_enabled: return
-                
+
                 description = (
                     f'**{user.name}** played some poker, won (clearly cheated) and goldened all their cards.\n'
                     f'These EPIC RPG players get more decadent every day.'
                 )
-                
+
                 await self.send_auto_flex_message(message, guild_settings, user_settings, user, 'card_golden',
                                                   description)
-                    
+
 
 
 # Initialization
