@@ -52,13 +52,14 @@ class TasksCog(commands.Cog):
                 for reminder in reminders_list:
                     if reminder.activity == 'custom':
                         reminder_message = strings.DEFAULT_MESSAGE_CUSTOM_REMINDER.format(message=reminder.message)
-                        if user_settings.dnd_mode_enabled:
-                            message = f'**{user_global_name}** {reminder_message}\n'
-                        else:
-                            message = f'{user.mention} {reminder_message}\n'
+                        # if user_settings.dnd_mode_enabled:
+                        #     message = f'**{user_global_name}** {reminder_message}\n'
+                        # else:
+                        message = f'{user.mention} {reminder_message}\n'
                     else:
                         reminder_message = reminder.message
-                        if user_settings.dnd_mode_enabled:
+                        bypass_dnd = ['vote', 'horse', 'dungeon-miniboss', 'card-hand']
+                        if user_settings.dnd_mode_enabled and reminder.activity not in bypass_dnd:
                             message = f'{reminder_message.replace("{name}", f"**{user_global_name}**")}\n'
                         else:
                             message = f'{reminder_message.replace("{name}", user.mention)}\n'
