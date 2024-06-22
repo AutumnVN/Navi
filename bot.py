@@ -32,7 +32,7 @@ if settings.DEBUG_MODE:
 else:
     bot: bridge.AutoShardedBot = bridge.AutoShardedBot(command_prefix=guilds.get_all_prefixes, help_command=None,
                                                        case_insensitive=True, intents=intents, allowed_mentions=allowed_mentions,
-                                                       owner_id=settings.OWNER_ID, activity=bot_activity,
+                                                       owner_id=settings.OWNER_ID,
                                                        member_cache_flags=member_cache_flags)
 
 
