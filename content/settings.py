@@ -553,13 +553,14 @@ async def command_purge_data(bot: bridge.AutoShardedBot, ctx: bridge.BridgeConte
             cur.execute('DELETE FROM users_portals WHERE user_id=?', (ctx.author.id,))
             await asyncio.sleep(1)
             await interaction.edit(content='Purging tracking data... (this can take a while)', view=None)
-            try:
-                log_entries =  await tracking.get_all_log_entries(ctx.author.id)
-            except exceptions.NoDataFoundError:
-                log_entries = []
-            for log_entry in log_entries:
-                await log_entry.delete()
-                await asyncio.sleep(0.01)
+            cur.execute('DELETE FROM tracking_log WHERE user_id=?', (ctx.author.id,))
+            # try:
+            #     log_entries =  await tracking.get_all_log_entries(ctx.author.id)
+            # except exceptions.NoDataFoundError:
+            #     log_entries = []
+            # for log_entry in log_entries:
+            #     await log_entry.delete()
+            #     await asyncio.sleep(0.01)
             await asyncio.sleep(1)
             await interaction.edit(
                 content=f'{emojis.ENABLED} **{ctx_author_name}**, you are now gone and forgotten. Thanks for using me!',
