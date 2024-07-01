@@ -191,7 +191,7 @@ class DevCog(commands.Cog):
                 # Create backup file
                 shutil.copy(old_emoji_file_path, old_emoji_backup_file_path)
 
-                # Read all emojis from emoji servers                
+                # Read all emojis from emoji servers
                 guild_id: int
                 server_emojis: list[discord.Emoji] = []
                 for guild_id in settings.EMOJI_GUILDS:
@@ -213,7 +213,7 @@ class DevCog(commands.Cog):
                             attribute_name: str
                             emoji_name: str
                             attribute_name, emoji_name = emoji_data_match.groups()
-                            
+
                             server_emoji: discord.Emoji
                             emoji_found: bool = False
                             for server_emoji in server_emojis:
@@ -223,7 +223,7 @@ class DevCog(commands.Cog):
                                     )
                                     emoji_found = True
                                     break
-                                
+
                             if not emoji_found:
                                 missing_emojis[attribute_name] = emoji_name
                                 new_emoji_file.write(f'{line.strip('\n')} # /dev emoji-update: Emoji not found\n')
@@ -241,7 +241,7 @@ class DevCog(commands.Cog):
                     f'_Update completed after {format_timespan(time_taken)}._\n'
                     f'_➜ Please run `/dev emoji-check` to make sure all emojis are present._'
                 )
-                
+
                 if missing_emojis:
                     description = (
                         f'{description}\n\n'
@@ -251,13 +251,13 @@ class DevCog(commands.Cog):
                     emoji_name: str
                     for attribute_name, emoji_name in missing_emojis.items():
                         description = f'{description}\n{emojis.BP} `{attribute_name.upper()}` (emoji name `{emoji_name}`)'
-                        
+
                 if len(description) >= 4096:
                     description = f'{description[:4050]}\n- ... too many missing emojis, what are you even doing?'
-                    
+
                 embed: discord.Embed = discord.Embed(title='Emoji Update', description=description)
                 await interaction.edit(content=None, embed=embed)
-                
+
             case _:
                 await interaction.edit(content='Updating aborted.', view=None)
 
@@ -568,7 +568,7 @@ class DevCog(commands.Cog):
         embed = await embed_dev_seasonal_event(self.bot)
         interaction = await ctx.respond(embed=embed, view=view)
         view.interaction = interaction
-        
+
 
     @dev_group.command(name='user-settings', aliases=('user',),
                        description='Returns settings of a user', guild_ids=settings.DEV_GUILDS)
@@ -599,11 +599,69 @@ class DevCog(commands.Cog):
         text_file: TextIO = open(text_file_path, 'w')
         text_file.write(file_content.strip(') '))
         text_file.close()
-        
+
         await ctx.respond(content=f'**User settings for `{user_id}`**', file=discord.File(text_file_path))
 
         os.remove(text_file_path)
 
+    @dev_group.command(name='purge', description='Purges a user from the database', guild_ids=settings.DEV_GUILDS)
+    async def dev_purge(
+        self,
+        ctx: bridge.BridgeContext,
+        user_id: BridgeOption(str, description='ID of the user to purge'),
+    ) -> None:
+        """Purges a user from the database"""
+        if ctx.author.id not in settings.DEV_IDS:
+            if ctx.is_app: await ctx.respond(MSG_NOT_DEV, ephemeral=True)
+            return
+        try:
+            user_id = int(user_id)
+        except:
+            await ctx.respond('Invalid ID.')
+            return
+        user_settings: users.User = await users.get_user(user_id)
+        if user_settings is None:
+            await ctx.respond('No user found with that ID.')
+            return
+        view = views.ConfirmCancelView(ctx, styles=[discord.ButtonStyle.blurple, discord.ButtonStyle.grey])
+        interaction = await ctx.respond(
+            f'Purge <@{user_id}> (`{user_id}`) from the database?',
+            view=view
+        )
+        view.interaction_message = interaction
+        await view.wait()
+        if view.value is None:
+            await ctx.followup.send(f'**{ctx.author.name}**, you didn\'t answer in time.', ephemeral=True)
+        elif view.value == 'confirm':
+            cur = settings.NAVI_DB.cursor()
+            await interaction.edit(content=f'Purging user settings...', view=None)
+            if user_settings.partner_id is not None:
+                try:
+                    partner_settings: users.User = await users.get_user(user_settings.partner_id)
+                    await partner_settings.update(partner_id=None)
+                except exceptions.FirstTimeUserError:
+                    pass
+            cur.execute('DELETE FROM users WHERE user_id=?', (user_id,))
+            await asyncio.sleep(1)
+            await interaction.edit(content='Purging alts...', view=None)
+            cur.execute('DELETE FROM alts WHERE user1_id=? OR user2_id=?', (user_id, user_id))
+            await asyncio.sleep(1)
+            await interaction.edit(content='Purging reminders...', view=None)
+            cur.execute('DELETE FROM reminders_users WHERE user_id=?', (user_id,))
+            await asyncio.sleep(1)
+            await interaction.edit(content='Purging raid data...', view=None)
+            cur.execute('DELETE FROM clans_raids WHERE user_id=?', (user_id,))
+            await asyncio.sleep(1)
+            await interaction.edit(content='Purging portals...', view=None)
+            cur.execute('DELETE FROM users_portals WHERE user_id=?', (user_id,))
+            await asyncio.sleep(1)
+            await interaction.edit(content='Purging tracking data... (this can take a while)', view=None)
+            cur.execute('DELETE FROM tracking_log WHERE user_id=?', (user_id,))
+            await asyncio.sleep(1)
+            await interaction.edit(
+                content=f'{emojis.ENABLED} <@{user_id}> (`{user_id}`), you are now gone and forgotten. Thanks for using me!',
+                view=None
+            )
 
 def setup(bot: bridge.AutoShardedBot):
     bot.add_cog(DevCog(bot))
