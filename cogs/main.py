@@ -215,19 +215,6 @@ class MainCog(commands.Cog):
         startup_info: str = f'{self.bot.user.name} has connected to Discord!'
         print(startup_info)
         logs.logger.info(startup_info)
-    @commands.Cog.listener()
-    async def on_guild_join(self, guild: discord.Guild) -> None:
-        """Fires when bot joins a guild. Sends a welcome message to the system channel."""
-        try:
-            guild_settings: guilds.Guild = await guilds.get_guild(guild.id)
-            welcome_message: str = (
-                f'**{guild.name}**! I\'m here to remind you to do your EPIC RPG commands!\n\n'
-                f'Note that reminders are off by default. If you want to get reminded, please use '
-                f'{await functions.get_navi_slash_command(self.bot, "on")} or `{guild_settings.prefix}on` to activate me.'
-            )
-            await guild.system_channel.send(welcome_message)
-        except:
-            return
 
 
 # Initialization
