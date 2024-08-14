@@ -604,7 +604,7 @@ class DevCog(commands.Cog):
 
         os.remove(text_file_path)
 
-    @dev_group.command(name='purge', description='Purges a user from the database', guild_ids=settings.DEV_GUILDS)
+    @dev_group.command(name='purge-user', description='Purges a user from the database', guild_ids=settings.DEV_GUILDS)
     async def dev_purge(
         self,
         ctx: bridge.BridgeContext,
@@ -662,6 +662,27 @@ class DevCog(commands.Cog):
                 content=f'{emojis.ENABLED} <@{user_id}> (`{user_id}`), you are now gone and forgotten. Thanks for using me!',
                 view=None
             )
+
+    @dev_group.command(name='user-list', description='List all users of the bot', guild_ids=settings.DEV_GUILDS)
+    async def dev_server_list(self, ctx: bridge.BridgeContext):
+        """List all users of the bot"""
+        if ctx.author.id not in settings.DEV_IDS:
+            if ctx.is_app: await ctx.respond(MSG_NOT_DEV, ephemeral=True)
+            return
+        all_users = await users.get_all_users()
+        description = ''
+        for user in all_users:
+            if len(description) > 4000:
+                description = f'{description}\n{emojis.BP} ... and more'
+                break
+            else:
+                description = f'{description}\n{emojis.BP} <@{user.user_id}> (`{user.user_id}`)'
+        embed = discord.Embed(
+            color = settings.EMBED_COLOR,
+            title = 'USER LIST',
+            description = description.strip(),
+        )
+        await ctx.respond(embed=embed)
 
 def setup(bot: bridge.AutoShardedBot):
     bot.add_cog(DevCog(bot))
