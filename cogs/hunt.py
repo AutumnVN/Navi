@@ -102,7 +102,7 @@ class HuntCog(commands.Cog):
                     if alone: last_hunt_mode = f'{last_hunt_mode} alone'
                     if old: last_hunt_mode = f'{last_hunt_mode} old'
                     last_hunt_mode = last_hunt_mode.strip()
-                if not user_settings.bot_enabled or not user_settings.alert_hunt.enabled or not user_settings.alert_hunt_partner.enabled: return
+                if not user_settings.bot_enabled or not user_settings.alert_hunt.enabled: return
                 if not user_settings.area_20_cooldowns_enabled and user_settings.current_area == 20: return
                 user_command = await functions.get_slash_command(user_settings, 'hunt')
                 if user_settings.last_hunt_mode != '':
@@ -346,19 +346,19 @@ class HuntCog(commands.Cog):
                                                       - floor(time_elapsed.total_seconds()))
                 else:
                     time_left_seconds = time_left_seconds_partner_hunt = actual_cooldown - floor(time_elapsed.total_seconds())
-                    
+
                 if user_settings.christmas_area_enabled:
                     time_left_seconds *= settings.CHRISTMAS_AREA_MULTIPLIER
                 if user_settings.round_card_active:
-                    time_left_seconds *= settings.ROUND_CARD_MULTIPLIER                    
+                    time_left_seconds *= settings.ROUND_CARD_MULTIPLIER
                 if user_settings.potion_flask_active:
                     time_left_seconds *= settings.POTION_FLASK_MULTIPLIER
-                    
+
                 if together and partner_christmas_area:
                     time_left_seconds_partner_hunt *= settings.CHRISTMAS_AREA_MULTIPLIERP
                 if together and partner is not None:
                     if partner.round_card_active:
-                        time_left_seconds_partner_hunt *= settings.ROUND_CARD_MULTIPLIER                    
+                        time_left_seconds_partner_hunt *= settings.ROUND_CARD_MULTIPLIER
                     if partner.potion_flask_active:
                         time_left_seconds_partner_hunt *= settings.POTION_FLASK_MULTIPLIER
                     if partner.chocolate_box_unlocked:
