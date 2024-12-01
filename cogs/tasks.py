@@ -58,7 +58,7 @@ class TasksCog(commands.Cog):
                         message = f'{user.mention} {reminder_message}\n'
                     else:
                         reminder_message = reminder.message
-                        bypass_dnd = ['vote', 'horse', 'dungeon-miniboss', 'card-hand']
+                        bypass_dnd = ['vote', 'horse', 'dungeon-miniboss', 'card-hand', 'epic']
                         if user_settings.dnd_mode_enabled and reminder.activity not in bypass_dnd:
                             message = f'{reminder_message.replace("{name}", f"**{user_global_name}**")}\n'
                         else:
@@ -285,7 +285,7 @@ class TasksCog(commands.Cog):
         try:
             self.delete_old_messages_from_cache.start()
         except RuntimeError:
-            pass 
+            pass
         try:
             self.reset_trade_daily_done.start()
         except RuntimeError:
